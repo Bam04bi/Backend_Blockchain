@@ -33,17 +33,6 @@ COPY test /home/app/test/
 # Specify the default command to display Truffle version
 CMD ["truffle", "version"]
 
-# Create a new stage named "ganache" based on the "base" stage
-FROM base as ganache
-
-# Set the working directory for the ganache stage
-RUN mkdir -p /home
-WORKDIR /home
-EXPOSE 8545
-
-# Set the default command to run Ganache with host configuration
-ENTRYPOINT ["ganache", "--host=0.0.0.0"]
-
 # Create a new stage named "app" based on the "base" stage
 FROM base as app
 
